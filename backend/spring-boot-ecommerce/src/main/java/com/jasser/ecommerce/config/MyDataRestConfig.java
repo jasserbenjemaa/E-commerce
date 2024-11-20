@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configurable
+@CrossOrigin("http://localhost:4200")
+//@CrossOrigin({"http://localhost:4200","http://www.mycoolapp.com"})allow js of only two web browsers to get the REST api from the backend
+//@CrossOrigin  allow js of any web browser to get the REST api from the backend
 public class MyDataRestConfig implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
