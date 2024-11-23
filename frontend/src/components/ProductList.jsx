@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useHttp from "../hooks/use-http";
 
 const ProductList = () => {
@@ -18,10 +18,10 @@ const ProductList = () => {
       { url: "http://localhost:8080/api/products" },
       transformProducts
     );
-    if (error) {
-      console.log(error);
-    }
   }, [fetchProducts]);
+  if (error) {
+    console.log(error);
+  }
 
   return (
     <>
