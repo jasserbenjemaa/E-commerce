@@ -5,9 +5,39 @@ import ProductBox from "./components/ProductBox";
 import PaginationFooter from "./components/PaginationFooter";
 
 const App = () => {
-  const products = [];
+  const products = [
+    {
+      id: 1,
+      name: "Product 1",
+      description: "Description for product 1",
+      price: 29.99,
+      image: "assets/images/products/product1.png",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      description: "Description for product 2",
+      price: 29.99,
+      image: "assets/images/products/product2.png",
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      description: "Description for product 3",
+      price: 39.99,
+      image: "assets/images/products/product3.png",
+    },
+    {
+      id: 4,
+      name: "Product 4",
+      description: "Description for product 4",
+      price: 49.99,
+      image: "./assets/images/products/placeholder.png",
+    },
+  ];
+
   return (
-    <body>
+    <>
       <div className="page-wrapper">
         <MenuSideBar />
 
@@ -18,9 +48,15 @@ const App = () => {
             <div className="section-content section-content-p30">
               <div className="container-fluid">
                 <div className="row">
-                  {products.map((e, i) => {
-                    <ProductBox elements={e} key={i} />;
-                  })}
+                  {products.map((product) => (
+                    <ProductBox
+                      key={product.id}
+                      name={product.name}
+                      description={product.description}
+                      price={product.price}
+                      image={product.image}
+                    />
+                  ))}
                 </div>
                 <PaginationFooter />
               </div>
@@ -30,19 +66,25 @@ const App = () => {
       </div>
 
       <footer>
-        <ul>
-          <li>
-            <a href="#">About Us</a>
+        <ul style={{ listStyleType: "none", padding: 0, textAlign: "center" }}>
+          <li style={{ display: "inline", margin: "0 10px" }}>
+            <a href="#" style={{ textDecoration: "none", color: "#007bff" }}>
+              About Us
+            </a>
           </li>
-          <li>
-            <a href="#">Contact Us</a>
+          <li style={{ display: "inline", margin: "0 10px" }}>
+            <a href="#" style={{ textDecoration: "none", color: "#007bff" }}>
+              Contact Us
+            </a>
           </li>
-          <li>
-            <a href="#">Help</a>
+          <li style={{ display: "inline", margin: "0 10px" }}>
+            <a href="#" style={{ textDecoration: "none", color: "#007bff" }}>
+              Help
+            </a>
           </li>
         </ul>
       </footer>
-    </body>
+    </>
   );
 };
 

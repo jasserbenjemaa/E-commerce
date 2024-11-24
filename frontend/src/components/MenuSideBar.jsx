@@ -1,30 +1,103 @@
 const MenuSideBar = () => {
   return (
     <>
-      <aside className="menu-sidebar d-none d-lg-block">
-        <div className="logo">
+      <aside
+        style={{
+          display: "none",
+          width: "250px",
+          backgroundColor: "#343a40", // Dark background
+          color: "#fff",
+          position: "fixed",
+          height: "100vh",
+          paddingTop: "20px",
+        }}
+      >
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: "20px",
+          }}
+        >
           <a href="home.html">
             <img
               src="assets/images/logo.png"
               alt="luv2shop logo"
-              className="img-fluid"
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
             />
           </a>
         </div>
-        <div className="menu-sidebar-content js-scrollbar1">
-          <nav className="navbar-sidebar" aria-label="Sidebar navigation">
-            <ul className="list-unstyled navbar-list">
-              <li>
-                <a href="/books">Books</a>
+        <div
+          style={{
+            overflowY: "auto",
+            height: "calc(100vh - 60px)", // Adjust height based on logo area
+          }}
+        >
+          <nav aria-label="Sidebar navigation">
+            <ul
+              style={{
+                listStyleType: "none",
+                padding: "0",
+                margin: "0",
+              }}
+            >
+              <li style={{ margin: "10px 0" }}>
+                <a
+                  href="/books"
+                  style={{
+                    color: "#fff",
+                    textDecoration: "none",
+                    padding: "10px 20px",
+                    display: "block",
+                    borderRadius: "4px",
+                  }}
+                >
+                  Books
+                </a>
               </li>
-              <li>
-                <a href="/coffee-mugs">Coffee Mugs</a>
+              <li style={{ margin: "10px 0" }}>
+                <a
+                  href="/coffee-mugs"
+                  style={{
+                    color: "#fff",
+                    textDecoration: "none",
+                    padding: "10px 20px",
+                    display: "block",
+                    borderRadius: "4px",
+                  }}
+                >
+                  Coffee Mugs
+                </a>
               </li>
-              <li>
-                <a href="/mouse-pads">Mouse Pads</a>
+              <li style={{ margin: "10px 0" }}>
+                <a
+                  href="/mouse-pads"
+                  style={{
+                    color: "#fff",
+                    textDecoration: "none",
+                    padding: "10px 20px",
+                    display: "block",
+                    borderRadius: "4px",
+                  }}
+                >
+                  Mouse Pads
+                </a>
               </li>
-              <li>
-                <a href="/luggage-tags">Luggage Tags</a>
+              <li style={{ margin: "10px 0" }}>
+                <a
+                  href="/luggage-tags"
+                  style={{
+                    color: "#fff",
+                    textDecoration: "none",
+                    padding: "10px 20px",
+                    display: "block",
+                    borderRadius: "4px",
+                  }}
+                >
+                  Luggage Tags
+                </a>
               </li>
             </ul>
           </nav>
