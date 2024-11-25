@@ -9,24 +9,38 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+/**
+ * Configuration class for customizing the behavior of Spring Data REST.
+ * It disables certain HTTP methods for specified domain types
+ * and configures Cross-Origin Resource Sharing (CORS) if needed.
+ */
 @Configurable
-
 public class MyDataRestConfig implements RepositoryRestConfigurer {
+
+    /**
+     * Customizes the repository REST configuration.
+     *
+     * @param config The configuration object for repository REST settings.
+     * @param cors   The CORS registry for defining CORS mappings.
+     */
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+        // Invoke default implementation for any inherited configurations
         RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
-        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT,HttpMethod.POST,HttpMethod.DELETE};
-        //disable HTTP methods for Product: PUT, POST and DELETE
+
+        // Define unsupported HTTP methods
+        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
+
+        // Disable HTTP methods for the "Product" entity: PUT, POST, and DELETE
         config.getExposureConfiguration()
                 .forDomainType(Product.class)
-                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 
-        //disable HTTP methods for ProductCategory: PUT, POST and DELETE
+        // Disable HTTP methods for the "ProductCategory" entity: PUT, POST, and DELETE
         config.getExposureConfiguration()
                 .forDomainType(ProductCategory.class)
-                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
-
+                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
     }
 }
