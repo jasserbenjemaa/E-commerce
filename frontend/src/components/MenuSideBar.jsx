@@ -1,9 +1,9 @@
-const MenuSideBar = () => {
+const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
   return (
     <>
       <aside
         style={{
-          display: "none",
+          display: menuSideBarIsVisible ? "" : "none",
           width: "250px",
           backgroundColor: "#343a40", // Dark background
           color: "#fff",
@@ -28,6 +28,7 @@ const MenuSideBar = () => {
               }}
             />
           </a>
+          <button onClick={menuSideBarHandler}>{"<-"}</button>
         </div>
         <div
           style={{

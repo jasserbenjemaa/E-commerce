@@ -3,46 +3,23 @@ import MenuSideBar from "./components/MenuSideBar";
 import { Header } from "./components/Header";
 import ProductBox from "./components/ProductBox";
 import PaginationFooter from "./components/PaginationFooter";
+import { useState } from "react";
 
 const App = () => {
-  const products = [
-    {
-      id: 1,
-      name: "Product 1",
-      description: "Description for product 1",
-      price: 29.99,
-      image: "assets/images/products/product1.png",
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      description: "Description for product 2",
-      price: 29.99,
-      image: "assets/images/products/product2.png",
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      description: "Description for product 3",
-      price: 39.99,
-      image: "assets/images/products/product3.png",
-    },
-    {
-      id: 4,
-      name: "Product 4",
-      description: "Description for product 4",
-      price: 49.99,
-      image: "./assets/images/products/placeholder.png",
-    },
-  ];
-
+  const products = [4, 4, 4, 4, 4];
+  const [menuSideBarIsVisible, setMenuSideBarIsVisible] = useState(false);
+  const menuSideBarHandler = () => {
+    setMenuSideBarIsVisible((prev) => !prev);
+  };
   return (
     <>
       <div className="page-wrapper">
-        <MenuSideBar />
-
+        <MenuSideBar
+          menuSideBarIsVisible={menuSideBarIsVisible}
+          menuSideBarHandler={menuSideBarHandler}
+        />
         <div className="page-container">
-          <Header />
+          <Header menuSideBarHandler={menuSideBarHandler} />
 
           <div className="main-content">
             <div className="section-content section-content-p30">

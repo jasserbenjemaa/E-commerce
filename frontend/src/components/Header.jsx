@@ -1,4 +1,4 @@
-export const Header = () => {
+export const Header = ({ menuSideBarHandler }) => {
   return (
     <header
       style={{
@@ -16,11 +16,12 @@ export const Header = () => {
               alignItems: "center",
             }}
           >
+            <button onClick={menuSideBarHandler}>{"->"}</button>
             <form
               style={{
                 display: "flex",
                 alignItems: "center",
-                width: "100%",
+                width: "60%",
               }}
               onSubmit={(e) => e.preventDefault()}
               method="GET"
@@ -68,18 +69,22 @@ export const Header = () => {
                     marginRight: "5px",
                     fontSize: "18px",
                     fontWeight: "bold",
+                    backgroundColor: "#007bff",
+                    padding: "5px",
+                    borderRadius: "10px",
                   }}
                 >
-                  19.22{" "}
-                  <span style={{ fontSize: "16px", fontWeight: "normal" }}>
-                    2
-                  </span>
+                  19.22{" DT "}
                 </div>
                 <i
                   className="fa fa-shopping-cart"
                   style={{ fontSize: "20px", color: "#000" }}
                   aria-hidden="true"
-                ></i>
+                >
+                  <span style={{ fontSize: "16px", fontWeight: "normal" }}>
+                    2
+                  </span>
+                </i>
               </a>
             </div>
           </div>
