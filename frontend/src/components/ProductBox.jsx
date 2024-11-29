@@ -1,5 +1,5 @@
-import img from "../assets/images/products/placeholder.png";
-const ProductBox = () => {
+import img from "../assets/images/products/books/book-luv2code-1018.png";
+const ProductBox = ({ name, unitPrice, image }) => {
   return (
     <div
       style={{
@@ -19,10 +19,10 @@ const ProductBox = () => {
         }}
       >
         <img
-          src={img}
-          alt="Product"
+          src={"../assets/img.png"}
+          alt={name + " image"}
           style={{
-            height: "auto",
+            height: "100%",
             marginBottom: "15px",
           }}
         />
@@ -34,17 +34,9 @@ const ProductBox = () => {
             marginBottom: "10px",
           }}
         >
-          Lorem ipsum dolor sit amet
+          {name}
         </h1>
-        <h2
-          style={{
-            fontSize: "16px",
-            color: "#777",
-            marginBottom: "15px",
-          }}
-        >
-          Duis aute irure dolor in reprehenderit in voluptate
-        </h2>
+
         <div
           style={{
             fontSize: "20px",
@@ -53,7 +45,7 @@ const ProductBox = () => {
             marginBottom: "15px",
           }}
         >
-          29.22 $
+          {unitPrice} $
         </div>
         <a
           href="#"
