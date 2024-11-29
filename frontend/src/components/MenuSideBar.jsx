@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
   return (
     <>
@@ -18,7 +20,7 @@ const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
             marginBottom: "20px",
           }}
         >
-          <a href="home.html">
+          <Link to="/">
             <img
               src="assets/images/logo.png"
               alt="luv2shop logo"
@@ -27,7 +29,7 @@ const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
                 height: "auto",
               }}
             />
-          </a>
+          </Link>
           <button onClick={menuSideBarHandler}>{"<-"}</button>
         </div>
         <div
@@ -45,8 +47,8 @@ const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
               }}
             >
               <li style={{ margin: "10px 0" }}>
-                <a
-                  href="/books"
+                <Link
+                  to="/1"
                   style={{
                     color: "#fff",
                     textDecoration: "none",
@@ -56,10 +58,11 @@ const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
                   }}
                 >
                   Books
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "10px 0" }}>
-                <a
+                <Link
+                  to="/2"
                   href="/coffee-mugs"
                   style={{
                     color: "#fff",
@@ -70,10 +73,11 @@ const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
                   }}
                 >
                   Coffee Mugs
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "10px 0" }}>
-                <a
+                <Link
+                  to="/3"
                   href="/mouse-pads"
                   style={{
                     color: "#fff",
@@ -84,10 +88,11 @@ const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
                   }}
                 >
                   Mouse Pads
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "10px 0" }}>
-                <a
+                <Link
+                  to="/4"
                   href="/luggage-tags"
                   style={{
                     color: "#fff",
@@ -98,7 +103,7 @@ const MenuSideBar = ({ menuSideBarIsVisible, menuSideBarHandler }) => {
                   }}
                 >
                   Luggage Tags
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
