@@ -1,4 +1,3 @@
-import img from "../assets/images/products/books/book-luv2code-1018.png";
 const ProductBox = ({ name, unitPrice, image }) => {
   return (
     <div
@@ -12,20 +11,15 @@ const ProductBox = ({ name, unitPrice, image }) => {
       <div
         style={{
           border: "1px solid #e0e0e0",
+          display: "flex",
+          flexDirection: "column",
           borderRadius: "8px",
           padding: "15px",
           textAlign: "center",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <img
-          src={"../assets/img.png"}
-          alt={name + " image"}
-          style={{
-            height: "100%",
-            marginBottom: "15px",
-          }}
-        />
+        <img src={"/" + image} alt={name + " image"} style={{}} />
         <h1
           style={{
             fontSize: "18px",
