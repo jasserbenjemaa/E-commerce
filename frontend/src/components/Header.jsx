@@ -1,4 +1,11 @@
-export const Header = ({ menuSideBarHandler }) => {
+import { useState } from "react";
+import { Link } from "react-router-dom";
+const Header = ({ menuSideBarHandler }) => {
+  const [searchInput, setsearchInput] = useState("");
+  const searchInputHandler = (e) => {
+    console.log(e.target.value);
+    setsearchInput(e.target.value);
+  };
   return (
     <header
       style={{
@@ -17,14 +24,12 @@ export const Header = ({ menuSideBarHandler }) => {
             }}
           >
             <button onClick={menuSideBarHandler}>{"->"}</button>
-            <form
+            <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 width: "60%",
               }}
-              onSubmit={(e) => e.preventDefault()}
-              method="GET"
             >
               <input
                 style={{
@@ -35,11 +40,13 @@ export const Header = ({ menuSideBarHandler }) => {
                   borderRadius: "4px",
                   marginRight: "10px",
                 }}
+                onChange={searchInputHandler}
+                value={searchInput}
                 type="text"
                 name="search"
                 placeholder="Search for data ..."
               />
-              <button
+              <Link
                 style={{
                   backgroundColor: "#007bff", // primary color
                   color: "#fff",
@@ -49,11 +56,11 @@ export const Header = ({ menuSideBarHandler }) => {
                   fontSize: "16px",
                   cursor: "pointer",
                 }}
-                type="submit"
+                to={"http://localhost:5173/search/" + searchInput}
               >
                 Search
-              </button>
-            </form>
+              </Link>
+            </div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <a
                 href="shopping-detail.html"
@@ -94,3 +101,4 @@ export const Header = ({ menuSideBarHandler }) => {
     </header>
   );
 };
+export default Header;

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import MenuSideBar from "../components/MenuSideBar";
-import { Header } from "../components/Header";
+import Header from "../components/Header";
 import PaginationFooter from "../components/PaginationFooter";
 const RootLayout = () => {
   const [menuSideBarIsVisible, setMenuSideBarIsVisible] = useState(false);

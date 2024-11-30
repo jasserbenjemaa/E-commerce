@@ -7,6 +7,12 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const { isLoading, error, sendRequest: fetchProducts } = useHttp();
   useEffect(() => {
+    const checkQuery = () => {
+      if (JSON.stringify(params) === "{}") return "";
+      return params.name
+        ? `/search/findByNameContaining?name=${params.name}`
+        : `/search/findByCategoryId?id=${params.id}`;
+    };
     const transformProducts = (productsObj) => {
       const loadedProducts = [];
       const products = productsObj["_embedded"]["products"];
@@ -18,11 +24,11 @@ const Home = () => {
     };
     fetchProducts(
       {
-        url: `http://localhost:8080/api/products/search/findByCategoryId?id=${params.id}`,
+        url: "http://localhost:8080/api/products" + checkQuery(),
       },
       transformProducts
     );
-  }, [fetchProducts, params.id]);
+  }, [fetchProducts, params]);
   if (error) {
     console.log(error);
   }
