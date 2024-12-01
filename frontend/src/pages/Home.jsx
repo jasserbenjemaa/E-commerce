@@ -42,10 +42,9 @@ const Home = () => {
           {products.map((product) => (
             <ProductBox
               key={product.id}
+              id={product.id}
               name={product.name}
-              description={product.description}
               unitPrice={product.unitPrice}
-              unitsInStock={product.unitsInStock}
               image={product.imageUrl}
             />
           ))}

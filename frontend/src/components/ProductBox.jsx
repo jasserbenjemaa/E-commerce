@@ -1,4 +1,6 @@
-const ProductBox = ({ name, unitPrice, image }) => {
+import { Link } from "react-router-dom";
+
+const ProductBox = ({ id, name, unitPrice, image }) => {
   return (
     <div
       style={{
@@ -20,7 +22,8 @@ const ProductBox = ({ name, unitPrice, image }) => {
         }}
       >
         <img src={"/" + image} alt={name + " image"} style={{}} />
-        <h1
+        <Link
+          to={`/products/${id}`}
           style={{
             fontSize: "18px",
             fontWeight: "bold",
@@ -29,7 +32,7 @@ const ProductBox = ({ name, unitPrice, image }) => {
           }}
         >
           {name}
-        </h1>
+        </Link>
 
         <div
           style={{
