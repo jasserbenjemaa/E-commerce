@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 const Header = ({ menuSideBarHandler }) => {
   const [searchInput, setsearchInput] = useState("");
   const searchInputHandler = (e) => {
-    console.log(e.target.value);
     setsearchInput(e.target.value);
   };
   return (

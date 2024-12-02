@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
 import ProductBox from "../components/ProductBox";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import useHttp from "../hooks/use-http";
 const Home = () => {
   const params = useParams();
+  const searchPrams = useSearchParams();
   const [products, setProducts] = useState([]);
   const { isLoading, error, sendRequest: fetchProducts } = useHttp();
   useEffect(() => {
     const checkQuery = () => {
       if (JSON.stringify(params) === "{}") return "";
       return params.name
-        ? `/search/findByNameContaining?name=${params.name}`
-        : `/search/findByCategoryId?id=${params.id}`;
+        ? `/search/findByNameContaining?name=${params.name}&page=${
+            searchPrams[0].get("page") ?? "0"
+          }&size=12`
+        : `/search/findByCategoryId?id=${params.id}&page=${
+            searchPrams[0].get("page") ?? "0"
+          }&size=12`;
     };
     const transformProducts = (productsObj) => {
       const loadedProducts = [];

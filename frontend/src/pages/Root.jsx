@@ -3,7 +3,9 @@ import { useState } from "react";
 import MenuSideBar from "../components/MenuSideBar";
 import Header from "../components/Header";
 import PaginationFooter from "../components/PaginationFooter";
+import { useLocation } from "react-router-dom";
 const RootLayout = () => {
+  const location = useLocation();
   const [menuSideBarIsVisible, setMenuSideBarIsVisible] = useState(false);
   const menuSideBarHandler = () => {
     setMenuSideBarIsVisible((prev) => !prev);
@@ -22,7 +24,7 @@ const RootLayout = () => {
             <div className="section-content section-content-p30">
               <div className="container-fluid">
                 <Outlet />
-                <PaginationFooter />
+                <PaginationFooter currentUrl={location.pathname} />
               </div>
             </div>
           </div>

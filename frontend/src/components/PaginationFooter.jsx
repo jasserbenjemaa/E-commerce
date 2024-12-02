@@ -1,4 +1,6 @@
-const Footer = () => {
+import PaginationBasic from "./UI/PaginationBasic";
+const Footer = ({ currentUrl }) => {
+  console.log(currentUrl);
   return (
     <div
       style={{
@@ -18,22 +20,6 @@ const Footer = () => {
         <div style={{ flex: 2 }}></div>
 
         {/* Items per page */}
-        <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
-          <label style={{ marginRight: "10px" }}>Items per page</label>
-          <select
-            style={{
-              padding: "5px",
-              border: "1px solid #ced4da",
-              borderRadius: "4px",
-              backgroundColor: "#fff",
-            }}
-          >
-            <option>10</option>
-            <option>20</option>
-            <option>30</option>
-            <option>40</option>
-          </select>
-        </div>
 
         {/* Page info */}
         <div
@@ -43,38 +29,7 @@ const Footer = () => {
             fontWeight: "bold",
           }}
         >
-          1 - 10 of 100
-        </div>
-
-        {/* Pagination arrows */}
-        <div
-          style={{
-            flex: 0.5,
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
-        >
-          <a
-            href="#"
-            style={{
-              color: "#6c757d",
-              textDecoration: "none",
-              fontSize: "16px",
-            }}
-          >
-            <i className="fa fa-angle-left" aria-hidden="true"></i>
-          </a>
-          <a
-            href="#"
-            style={{
-              color: "#6c757d",
-              textDecoration: "none",
-              fontSize: "16px",
-            }}
-          >
-            <i className="fa fa-angle-right" aria-hidden="true"></i>
-          </a>
+          <PaginationBasic />
         </div>
       </div>
     </div>
