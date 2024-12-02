@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const ProductDetails = () => {
   const params = useParams();
-  const { isLoading, error, sendRequest: fetchProduct } = useHttp();
+  const { error, sendRequest: fetchProduct } = useHttp();
   const [product, setProduct] = useState();
   useEffect(() => {
     const transformProducts = (productsObj) => {

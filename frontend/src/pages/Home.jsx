@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 import ProductBox from "../components/ProductBox";
 import { useParams, useSearchParams } from "react-router-dom";
 import useHttp from "../hooks/use-http";
+import { useDispatch } from "react-redux";
+import { setPageNumbers } from "../store/pageNumber";
 const Home = () => {
+  const dispatch = useDispatch();
   const params = useParams();
   const searchPrams = useSearchParams();
   const [products, setProducts] = useState([]);
   const { isLoading, error, sendRequest: fetchProducts } = useHttp();
   useEffect(() => {
     const checkQuery = () => {
-      if (JSON.stringify(params) === "{}") return "";
+      if (JSON.stringify(params) === "{}")
+        return `?page=${searchPrams[0].get("page") ?? "0"}`;
+
       return params.name
         ? `/search/findByNameContaining?name=${params.name}&page=${
             searchPrams[0].get("page") ?? "0"
@@ -24,7 +29,8 @@ const Home = () => {
       products.forEach((element) => {
         loadedProducts.push(element);
       });
-
+      //
+      dispatch(setPageNumbers(productsObj["page"]["totalPages"]));
       setProducts(loadedProducts);
     };
     fetchProducts(

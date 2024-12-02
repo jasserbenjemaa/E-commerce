@@ -1,6 +1,5 @@
 import PaginationBasic from "./UI/PaginationBasic";
-const Footer = ({ currentUrl }) => {
-  console.log(currentUrl);
+const Footer = () => {
   return (
     <div
       style={{
@@ -18,9 +17,6 @@ const Footer = ({ currentUrl }) => {
       >
         {/* Empty column */}
         <div style={{ flex: 2 }}></div>
-
-        {/* Items per page */}
-
         {/* Page info */}
         <div
           style={{
