@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Header = ({ menuSideBarHandler }) => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  const totalAmount = useSelector((state) => state.cart.totalAmount).toFixed(2);
+  const totalAmount =
+    useSelector((state) => state.cart.totalAmount).toFixed(2) ?? 0;
   const [searchInput, setsearchInput] = useState("");
   const searchInputHandler = (e) => {
     setsearchInput(e.target.value);
   };
+
   return (
     <header
       style={{
@@ -58,7 +60,7 @@ const Header = ({ menuSideBarHandler }) => {
                   fontSize: "16px",
                   cursor: "pointer",
                 }}
-                to={"http://localhost:5173/search/" + searchInput}
+                to={!searchInput.trim() ? "" : "/search/" + searchInput}
               >
                 Search
               </Link>
@@ -85,7 +87,8 @@ const Header = ({ menuSideBarHandler }) => {
                 >
                   {totalAmount + " DT "}
                 </div>
-                <div
+                <Link
+                  to="/checkout-products"
                   className="fa fa-shopping-cart"
                   style={{ fontSize: "20px", color: "#000" }}
                   aria-hidden="true"
@@ -93,7 +96,7 @@ const Header = ({ menuSideBarHandler }) => {
                   <span style={{ fontSize: "16px", fontWeight: "normal" }}>
                     {totalQuantity}
                   </span>
-                </div>
+                </Link>
               </a>
             </div>
           </div>

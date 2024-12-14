@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
 import useHttp from "../hooks/use-http";
 import { useEffect, useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../store/carte";
 const ProductDetails = () => {
+  const dispatch = useDispatch();
   const params = useParams();
   const { error, sendRequest: fetchProduct } = useHttp();
   const [product, setProduct] = useState();
+
   useEffect(() => {
     const transformProducts = (productsObj) => {
       setProduct(productsObj);
@@ -18,6 +21,15 @@ const ProductDetails = () => {
     );
   }, [fetchProduct, params]);
   if (error) console.log(error);
+  const addToCartHandler = () => {
+    dispatch(
+      addItemToCart({
+        id: product.id,
+        price: product.unitPrice,
+        name: product.name,
+      })
+    );
+  };
   return (
     <>
       {product === undefined ? (
@@ -40,7 +52,10 @@ const ProductDetails = () => {
               <p className="text-muted">Category: {product.sku}</p>
               <h2 className="text-primary">{product.unitPrice} DT</h2>
               <p className="mt-4">{product.description}</p>
-              <button className="btn btn-success btn-lg mt-3">
+              <button
+                className="btn btn-success btn-lg mt-3"
+                onClick={addToCartHandler}
+              >
                 Add to Cart
               </button>
             </div>

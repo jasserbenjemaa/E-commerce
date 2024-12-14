@@ -10,6 +10,7 @@ const ProductBox = ({ id, name, unitPrice, image }) => {
         id: id,
         price: unitPrice,
         name: name,
+        image: image,
       })
     );
   };
@@ -54,7 +55,7 @@ const ProductBox = ({ id, name, unitPrice, image }) => {
             marginBottom: "15px",
           }}
         >
-          {unitPrice} $
+          {unitPrice + " DT"}
         </div>
         <button
           onClick={addToCartHandler}
