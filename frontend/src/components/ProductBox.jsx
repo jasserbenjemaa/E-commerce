@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../store/carte";
 
 const ProductBox = ({ id, name, unitPrice, image }) => {
+  const dispatch = useDispatch();
+  const addToCartHandler = () => {
+    dispatch(
+      addItemToCart({
+        id: id,
+        price: unitPrice,
+        name: name,
+      })
+    );
+  };
   return (
     <div
       style={{
@@ -44,8 +56,8 @@ const ProductBox = ({ id, name, unitPrice, image }) => {
         >
           {unitPrice} $
         </div>
-        <a
-          href="#"
+        <button
+          onClick={addToCartHandler}
           style={{
             display: "inline-block",
             backgroundColor: "#007bff",
@@ -57,7 +69,7 @@ const ProductBox = ({ id, name, unitPrice, image }) => {
           }}
         >
           Add to cart
-        </a>
+        </button>
       </div>
     </div>
   );

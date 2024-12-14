@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Header = ({ menuSideBarHandler }) => {
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const totalAmount = useSelector((state) => state.cart.totalAmount).toFixed(2);
   const [searchInput, setsearchInput] = useState("");
   const searchInputHandler = (e) => {
     setsearchInput(e.target.value);
@@ -80,17 +83,17 @@ const Header = ({ menuSideBarHandler }) => {
                     borderRadius: "10px",
                   }}
                 >
-                  19.22{" DT "}
+                  {totalAmount + " DT "}
                 </div>
-                <i
+                <div
                   className="fa fa-shopping-cart"
                   style={{ fontSize: "20px", color: "#000" }}
                   aria-hidden="true"
                 >
                   <span style={{ fontSize: "16px", fontWeight: "normal" }}>
-                    2
+                    {totalQuantity}
                   </span>
-                </i>
+                </div>
               </a>
             </div>
           </div>
