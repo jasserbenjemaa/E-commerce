@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
-//                                               name of the json         path : /product-category
+//                                              name of the json         path : /product-category
 @RepositoryRestResource(collectionResourceRel = "productCategory",path = "product-category")
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory,Long> {
 }
