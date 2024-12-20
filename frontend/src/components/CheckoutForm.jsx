@@ -5,6 +5,11 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const CheckoutForm = () => {
+  const getCsrfToken = async () => {
+    const response = await fetch("/api/csrf");
+    const csrfToken = await response.text();
+    return csrfToken;
+  };
   const products = useSelector((state) => state.cart);
   const { sendRequest } = useHttp();
   const [states, setStates] = useState([]);
@@ -58,9 +63,8 @@ const CheckoutForm = () => {
       method: "POST",
       body: body,
       headers: {
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Post": " application/json; charset=UTF-8",
-        Accept: "*/*",
+        "Content-Type": "application/json",
+        "X-CSRF-Token": getCsrfToken(),
       },
     });
   };

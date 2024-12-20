@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Header = ({ menuSideBarHandler }) => {
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  const totalAmount =
-    useSelector((state) => state.cart.totalAmount).toFixed(2) ?? 0;
+  const cart = useSelector((state) => state.cart);
+  const [totalAmount, setTotalAmount] = useState(cart.totalAmount);
+  const [totalQuantity, setTotalQuantity] = useState(cart.totalQuantity);
+
   const [searchInput, setsearchInput] = useState("");
   const searchInputHandler = (e) => {
     setsearchInput(e.target.value);
   };
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setTotalAmount(JSON.parse(localStorage.getItem("cart")).totalAmount);
+    setTotalQuantity(JSON.parse(localStorage.getItem("cart")).totalQuantity);
+  }, [cart]);
 
   return (
     <header
@@ -85,7 +91,7 @@ const Header = ({ menuSideBarHandler }) => {
                     borderRadius: "10px",
                   }}
                 >
-                  {totalAmount + " DT "}
+                  {totalAmount.toFixed(2) + " DT "}
                 </div>
                 <Link
                   to="/checkout-products"
