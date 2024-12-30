@@ -5,6 +5,8 @@ import ProductDetails from "./components/ProductDetails";
 import RootLayout from "./pages/Root";
 import CheckoutForm from "./components/CheckoutForm";
 import ProductList from "./components/ProductList";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       { path: "checkout-products", element: <ProductList /> },
     ],
   },
+  { path: "login", element: <Login /> },
+  { path: "register", element: <Register /> },
 ]);
 
 const App = () => {
